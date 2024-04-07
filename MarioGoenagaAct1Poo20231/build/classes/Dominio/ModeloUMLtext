@@ -1,0 +1,210 @@
+@startuml
+!theme crt-green
+
+
+title Empty Diagram
+
+Class Empresa{
+-Int id;
+-String nit;
+-String nombre;
+-String telefono;
+-String correoElectronico;
+-List<Empleado> empleados;
++getNit();
++setNit();
++getNombre();
++setNombre();
++getTelefono();
++setTelefono();
++getCorreoElectronico();
++setCorreoElectronico();
++getEmpleados();
++Empresa();
+}
+
+Class Proyecto{
+-Int id;
+-String nombreClave;
+-String denomComercial;
+-Date fechaInicio;
+-Date fechaFinalizacion;
+-String estado;
+-String codigoProyecto;
+-Promotor promotor;
+-List<Tarea> tareas;
++getNombreClave();
++setNombreClave();
++getDenomComercial();
++setDenomComercial();
++getFechaInicio();
++getFechaFinalizacion();
++getEstado();
++setEstado();
++getPromotor();
++setPromotor();
++getTareas();
++setTareas();
++Proyecto();
+}
+
+Class Usuario{
+-Int id;
+-String usuario;
+-String contrasena;
+-String estado;
++getUsuario();
++setUsuario();
++getContrasena();
++setContrasena();
++getEstado();
++setEstado();
++Usuario();
+}
+
+Class Promotor{
+-List<Proyecto> proyectos;
+}
+
+Class Tarea{
+-Int id;
+-String descripcion;
+-String tipo;
+-Date fechaInicioEstimada;
+-Date fechaInicioReal;
+-String duracionEstimada;
+-String duracionReal;
+-String empleado;
+-String documento;
+-String prioridad;
+-Proyecto proyecto;
+-List<Documento> documentos;
++getDescripcion();
++setDescripcion();
++getTipo();
++setTipo();
++getFechaInicioEstimada();
++getFechaInicioReal();
++setFechaInicioReal();
++getDuracionEstimada();
++getDuracionReal();
++getEmpleado();
++setEmpleado();
++getDocumento();
++setDocumento();
++getPrioridad();
++setPrioridad();
++getProyecto();
++setProyecto();
++getDocumentos();
++setDocumentos();
++Tarea();
+}
+
+Class Empleado{
+-Int id;
+-String dni;
+-String nombre;
+-String apellido;
+-String direccion;
+-String telefono;
+-String correoElectronico;
+-Date fechaContratacion;
+-String rol;
+-String tipoContrato;
+-Empresa empresa;
++VisualizarFicha();
++getDni();
++getNombre();
++setNombre();
++getApellido();
++setApellido();
++getDireccion();
++setDireccion();
++getTelefono();
++setTelefono();
++getCorreoElectronico();
++setCorreoElectronico();
++getFechaContratacion();
++getRol();
++setRol();
++getTipoContrato();
++setTipoContrato();
++Empleado();
+}
+
+Class Documento{
+-Int id;
+-String proyecto;
+-String codigoDocumento;
+-Date fechaDocumento;
+-String descricion;
+-Tarea tarea;
+-List<Version> versiones;
++getProyecto();
++setProyecto();
++getCodigoDocumento();
++setCodigoDocumento();
++getFechaDocumento();
++setFechaDocumento();
++getDescripcion();
++setDescripcion();
++getTarea();
++setTarea();
++getVersiones();
++setVersiones();
++Documento();
+}
+
+Class Version{
+-Int id;
+-Date fecha;
+-String descricion;
+-String empleado;
+-Documento documento;
++ActualizarVersion();
++RevertirVersion();
++getFecha();
++setFecha();
++getDescripcion();
++setDescripcion();
++getEmpleado();
++setEmpleado();
++getDocumento();
++setDocumento();
++Version();
+}
+
+Class RutaTrabajo{
+-Int id;
+-Empleado empleado;
+-Tarea tarea;
++getEmpleado();
++getTarea();
++RutaTrabajo();
+}
+
+Class FuerzaLaboral{
+-Int id;
+-Empleado empleado;
+-Proyecto proyecto;
++getEmpleado();
++getProyecto();
++FuerzaLaboral();
+}
+
+Empleado "1..*" -- "1..*" Tarea : Realiza
+(Empleado, Tarea) .. RutaTrabajo
+Empresa "1" -- "*" Empleado : Trabaja
+Promotor "1" *-- "*" Proyecto : Promueve
+Documento "1" *-- "*" Version : Tiene
+Empleado "1..*" -- "1..*" Proyecto : Asignado
+(Empleado, Proyecto) .. FuerzaLaboral
+Empleado <|-- Promotor : Es un
+Usuario <|-- Empleado : Es un
+Tarea "1" *-- "*" Documento : Genera
+Proyecto "1" *-- "*" Tarea : Dividido en
+
+
+
+@enduml
