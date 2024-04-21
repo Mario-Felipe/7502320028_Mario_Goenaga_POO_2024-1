@@ -32,6 +32,14 @@ public class RutaTrabajo {
     public Tarea getTarea() {
         return tarea;
     }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+    public void setTarea(Tarea tarea) {
+        this.tarea = tarea;
+    }
     
     
 

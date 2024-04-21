@@ -25,7 +25,7 @@ public class Empleado extends Usuario{
     
     public Empleado() {}
 
-    public Empleado(String usuario,String contrasena,String estado,String dni, String nombre, String apellido, String direccion, String telefono, String correoElectronico, Date fechaContratacion, String rol, String tipoContrato, Empresa empresa) {
+    public Empleado(String usuario,String contrasena,String estado,String dni, String nombre, String apellido, String direccion, String telefono, String correoElectronico, Date fechaContratacion, String rol, String tipoContrato, Empresa empresa, Date fechaNacimiento) {
         
         super(usuario, contrasena, estado);
         this.dni = dni;
@@ -116,11 +116,16 @@ public class Empleado extends Usuario{
     public Empresa getEmpresa() {
         return empresa;
     }
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
 
     @Override
     public String toString() {
         return "Ficha del Empleado: " + "\n DNI: " + dni + "\n Nombre: " + nombre + "\n Apellido: " + apellido + "\n Direccion: " + direccion + "\n Telefono: " + telefono + "\n Correo Electronico: " + correoElectronico + "\n Fecha de Contratacion: " + fechaContratacion + "\n Rol: " + rol + "\n Tipo de Contrato: " + tipoContrato;
     }
+
+    
 
     
     

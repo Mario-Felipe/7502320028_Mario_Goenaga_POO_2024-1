@@ -4,6 +4,7 @@
  */
 package Dominio;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 /**
@@ -29,7 +30,7 @@ public class Documento {
         this.fechaDocumento = fechaDocumento;
         this.descripcion = descripcion;
         this.tarea = tarea;
-        this.versiones.add(versiones);
+        this.versiones = new ArrayList<Version>();
                 
     }
     
@@ -61,12 +62,17 @@ public class Documento {
     public String getDescripcion() {
         return descripcion;
     }
-    public void setDescricion(String descripcion) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
     public Tarea getTarea() {
         return tarea;
+    }
+    
+
+    public void setTarea(Tarea tarea) {
+        this.tarea = tarea;
     }
 
     public List<Version> getVersiones() {

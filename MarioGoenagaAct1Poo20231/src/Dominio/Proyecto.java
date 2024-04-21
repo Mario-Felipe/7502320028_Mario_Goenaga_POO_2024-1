@@ -4,6 +4,7 @@
  */
 package Dominio;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class Proyecto {
         this.estado = estado;
         this.codigoProyecto = codigoProyecto;
         this.promotor = promotor;
-        this.tareas.add(tareas);        
+        this.tareas = new ArrayList<Tarea>();        
           
     }
 
@@ -86,6 +87,9 @@ public class Proyecto {
 
     public Promotor getPromotor() {
         return promotor;
+    }
+    public void setPromotor(Promotor promotor) {
+        this.promotor = promotor;
     }
 
     public List<Tarea> getTareas() {

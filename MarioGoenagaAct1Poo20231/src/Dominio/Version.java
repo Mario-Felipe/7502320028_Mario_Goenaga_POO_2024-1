@@ -13,6 +13,7 @@ import java.util.Date;
 public class Version {
 
     private int id;
+    private String identificacion;
     private Date fecha;
     private String descripcion;
     private String empleado;
@@ -20,7 +21,8 @@ public class Version {
     
     public Version(){}
 
-    public Version(Date fecha, String descripcion, String empleado, Documento documento) {
+    public Version(String identificacion, Date fecha, String descripcion, String empleado, Documento documento) {
+        this.identificacion = identificacion;
         this.fecha = fecha;
         this.descripcion = descripcion;
         this.empleado = empleado;
@@ -29,8 +31,14 @@ public class Version {
     
     public int getId() {
         return id;
-    }    
+    } 
 
+    public String getIdentificacion() {
+        return identificacion;
+    }
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
     public Date getFecha() {
         return fecha;
     }
@@ -54,6 +62,9 @@ public class Version {
 
     public Documento getDocumento() {
         return documento;
+    }
+    public void setDocumento(Documento documento) {
+        this.documento = documento;
     }
 
     @Override

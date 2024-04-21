@@ -4,6 +4,7 @@
  */
 package Dominio;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class Tarea {
         this.empleado = empleado;
         this.prioridad = prioridad;
         this.proyecto = proyecto;
-        this.documentos.add(documentos);
+        this.documentos = new ArrayList<Documento>();
 
     }
     
@@ -105,6 +106,9 @@ public class Tarea {
 
     public Proyecto getProyecto() {
         return proyecto;
+    }
+    public void setProyecto(Proyecto proyecto) {
+        this.proyecto = proyecto;
     }
 
     public List<Documento> getDocumentos() {

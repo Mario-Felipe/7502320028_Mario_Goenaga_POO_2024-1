@@ -32,6 +32,15 @@ public class FuerzaLaboral {
     public Proyecto getProyecto() {
         return proyecto;
     }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+    public void setProyecto(Proyecto proyecto) {
+        this.proyecto = proyecto;
+    }
+    
     
 
 }

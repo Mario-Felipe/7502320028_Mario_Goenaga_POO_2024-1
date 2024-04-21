@@ -4,6 +4,7 @@
  */
 package Dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,7 +29,7 @@ public class Empresa {
         this.nombre = nombre;
         this.telefono = telefono;
         this.correoElectronico = correoElectronico;
-        this.empleados.add(empleados);
+        this.empleados = new ArrayList<Empleado>();
 
     }
 
