@@ -6,6 +6,7 @@ package co.edu.udec.poo.mariogoenaga;
 
 import java.util.Date;
 
+import Crud.DocumentoCrud;
 import Dominio.Documento;
 import Dominio.Empleado;
 import Dominio.Empresa;
@@ -24,20 +25,20 @@ public class Principal {
     
     public static void main (String args[]){
 
-        Documento personaUno = new Documento();
-        Empleado trabajadorUno = new Empleado();
+        Documento documentoUno = new Documento();
         Empresa companiaUno = new Empresa();
-        FuerzaLaboral manoObraUno = new FuerzaLaboral();//Pendiente
+        Empleado trabajadorUno = new Empleado();
+        FuerzaLaboral manoObraUno = new FuerzaLaboral();
         Promotor liderUno = new Promotor();
         Proyecto proyectoUno = new Proyecto();
         RutaTrabajo planUno = new RutaTrabajo();
         Tarea actividadUno = new Tarea();
         Version versionUno = new Version();
 
-        Documento personaDos = new Documento();
+        Documento documentoDos = new Documento();
         Empleado trabajadorDos = new Empleado();
         Empresa companiaDos = new Empresa();
-        FuerzaLaboral manoObraDos = new FuerzaLaboral();//Pendiente
+        FuerzaLaboral manoObraDos = new FuerzaLaboral();
         Promotor liderDos = new Promotor();
         Proyecto proyectoDos = new Proyecto();
         RutaTrabajo planDos = new RutaTrabajo();
@@ -87,7 +88,6 @@ public class Principal {
 
         manoObraDos.setEmpleado(liderDos);
         manoObraDos.setProyecto(proyectoDos);
-
         
         liderUno.setArea("Aplicativos Medio Ambiente");
         liderUno.setUsuario("MariB.PRO.01");
@@ -153,17 +153,17 @@ public class Principal {
         actividadDos.setPrioridad("Alta");
         actividadDos.setProyecto(proyectoDos);
 
-        personaUno.setProyecto("Propyecto A");
-        personaUno.setCodigoDocumento("001");
-        personaUno.setFechaDocumento(new Date(03/13/2020));
-        personaUno.setDescripcion("Registro Actividad 1.");      
-        personaUno.setTarea(actividadUno);
+        documentoUno.setProyecto("Proyecto A");
+        documentoUno.setCodigoDocumento("001");
+        documentoUno.setFechaDocumento(new Date(03/13/2020));
+        documentoUno.setDescripcion("Registro Actividad 1.");      
+        documentoUno.setTarea(actividadUno);
 
-        personaDos.setProyecto("Proyecto B");
-        personaDos.setCodigoDocumento("002");
-        personaDos.setFechaDocumento(new Date(27/04/2021));
-        personaDos.setDescripcion("Registro Actividad 2.");
-        personaDos.setTarea(actividadDos);
+        documentoDos.setProyecto("Proyecto B");
+        documentoDos.setCodigoDocumento("002");
+        documentoDos.setFechaDocumento(new Date(27/04/2021));
+        documentoDos.setDescripcion("Registro Actividad 2.");
+        documentoDos.setTarea(actividadDos);
 
         planUno.setEmpleado(liderUno);
         planUno.setTarea(actividadUno);
@@ -175,14 +175,33 @@ public class Principal {
         versionUno.setFecha(new Date(10/6/2021)); 
         versionUno.setDescripcion("Primera versión del documento");
         versionUno.setEmpleado("Maria Bocanada");
-        versionUno.setDocumento(personaUno);
+        versionUno.setDocumento(documentoUno);
 
         versionDos.setIdentificacion("V2.AMB001");
         versionDos.setFecha(new Date(10/8/2021)); 
         versionDos.setDescripcion("Segunda versión del documento");
         versionDos.setEmpleado("Maria Bocanada");
-        versionDos.setDocumento(personaDos);
+        versionDos.setDocumento(documentoDos);
        
-    }
+        DocumentoCrud documentoCrud = new DocumentoCrud();
+        try {
+            documentoCrud.agregar(documentoUno);
+            documentoCrud.agregar(documentoDos);
+            documentoCrud.buscar("001");
+            documentoCrud.buscar("007");
+            documentoCrud.buscar("002");
+            documentoCrud.editar(documentoUno);
+            documentoCrud.editar(documentoDos);
+            documentoCrud.eliminar("001");
+            documentoCrud.eliminar("007");
+            System.out.println("La lista de documentos es: " + documentoCrud.listarTodo());
+            System.out.println("El numero de documentos existentes es: " + documentoCrud.contar());
+            
+            } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+        
+     }
         
 }

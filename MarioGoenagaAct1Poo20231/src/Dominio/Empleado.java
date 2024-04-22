@@ -25,7 +25,7 @@ public class Empleado extends Usuario{
     
     public Empleado() {}
 
-    public Empleado(String usuario,String contrasena,String estado,String dni, String nombre, String apellido, String direccion, String telefono, String correoElectronico, Date fechaContratacion, String rol, String tipoContrato, Empresa empresa, Date fechaNacimiento) {
+    public Empleado(String usuario,String contrasena,String estado,String dni, String nombre, String apellido, String direccion, String telefono, String correoElectronico, Date fechaContratacion, String rol, String tipoContrato, Date fechaNacimiento, Empresa empresa) {
         
         super(usuario, contrasena, estado);
         this.dni = dni;

@@ -23,7 +23,7 @@ public class Promotor extends Empleado {
 
     public Promotor(String usuario, String contrasena, String estado, String dni, String nombre, String apellido, String direccion, String telefono, String correoElectronico, Date fechaContratacion, String rol, String tipoContrato, Empresa empresa, String area, Proyecto proyectos, Date fechaNacimiento) {
 
-        super(usuario, contrasena, estado, dni, nombre, apellido, direccion, telefono, correoElectronico, fechaContratacion, rol, tipoContrato, empresa,fechaNacimiento);
+        super(usuario, contrasena, estado, dni, nombre, apellido, direccion, telefono, correoElectronico, fechaContratacion, rol, tipoContrato, fechaNacimiento, empresa);
         this.proyectos = new ArrayList<Proyecto>();
 
     }

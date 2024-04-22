@@ -10,7 +10,12 @@ import Model.ModeloCrud;
 
 public class DocumentoCrud implements ModeloCrud<Documento> {
 
-    private HashMap<String, Documento> listDocumento;
+    private HashMap<String, Documento> listDocumento = new HashMap<>();
+
+    
+    public DocumentoCrud() {  
+        this.listDocumento = new HashMap<>();      
+    }
 
     @Override
     public void agregar(Documento objeto) throws Exception {

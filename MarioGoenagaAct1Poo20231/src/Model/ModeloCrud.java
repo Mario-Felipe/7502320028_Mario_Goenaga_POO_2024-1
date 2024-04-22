@@ -10,6 +10,6 @@ public interface ModeloCrud<Clase> {
     public void eliminar(String codigo) throws Exception;
     public List<Clase> listarTodo() throws Exception;
     public int contar() throws Exception;
-
+    
         
 }
