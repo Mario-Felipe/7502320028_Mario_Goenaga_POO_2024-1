@@ -14,7 +14,7 @@ public class ProyectoCrud implements ModeloCrud<Proyecto> {
     @Override
     public void agregar(Proyecto objeto) throws Exception {
         try {
-            if (listProyecto.containsKey(objeto.getNombreClave())) {
+            if (listProyecto.containsKey(objeto.getCodigoProyecto())) {
                 throw new Exception("El Proyecto ya se encuentra registrado");
             }
             listProyecto.put(objeto.getNombreClave(), objeto);
