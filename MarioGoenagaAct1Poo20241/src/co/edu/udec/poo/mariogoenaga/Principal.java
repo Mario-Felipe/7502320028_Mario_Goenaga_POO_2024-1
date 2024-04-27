@@ -195,6 +195,8 @@ public class Principal {
         versionDos.setEmpleado("Maria Bocanada");
         versionDos.setDocumento(documentoDos);
 
+        documentoDos.setDescripcion("Documento generado por la actividad1");
+
         DocumentoCrud documentoCrud = new DocumentoCrud();
         try {
             documentoCrud.agregar(documentoUno);
@@ -202,7 +204,6 @@ public class Principal {
             documentoCrud.buscar("D1AMB001");
             documentoCrud.buscar("D10AMB007");
             documentoCrud.buscar("D1DIV001");
-            documentoCrud.editar(documentoUno);
             documentoCrud.editar(documentoDos);
             documentoCrud.eliminar("D1AMB001");
             documentoCrud.eliminar("D10AMB008");
@@ -213,6 +214,8 @@ public class Principal {
             System.out.println(e.getMessage());
         }
 
+        companiaUno.setTelefono("6056693383");
+
         EmpresaCrud empresaCrud = new EmpresaCrud();
         try {
             empresaCrud.agregar(companiaUno);
@@ -221,15 +224,17 @@ public class Principal {
             empresaCrud.buscar("1901417850");
             empresaCrud.buscar("1901400050");
             empresaCrud.editar(companiaUno);
-            empresaCrud.editar(companiaDos);
-            empresaCrud.eliminar("1901515128");
+            empresaCrud.eliminar("1901417850");
             empresaCrud.eliminar("1901400050");
             System.out.println("La Lista de compañias es: " + empresaCrud.listarTodo());
             System.out.println("El número de empresas existentes en la lista es: " + empresaCrud.contar());
-            System.out.println("");            
+            System.out.println("");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+        trabajadorUno.setCorreoElectronico("eday@hotmail.com");
+        trabajadorUno.setDireccion("Cll 95 # 5 - 15");
 
         EmpleadoCrud empleadoCrud = new EmpleadoCrud();
         try {
@@ -239,8 +244,7 @@ public class Principal {
             empleadoCrud.buscar("DD002");
             empleadoCrud.buscar("DD111");
             empleadoCrud.editar(trabajadorUno);
-            empleadoCrud.editar(trabajadorDos);
-            empleadoCrud.eliminar("DD001");
+            empleadoCrud.eliminar("DD002");
             empleadoCrud.eliminar("DD222");
             System.out.println("La lista de empleados es: " + empleadoCrud.listarTodo());
             System.out.println("El número de empleados existentes en la lista es: " + empleadoCrud.contar());
@@ -249,51 +253,54 @@ public class Principal {
             System.out.println(e.getMessage());
         }
 
+        liderDos.setCorreoElectronico("aijue2000@yahoo.com");
+
         PromotorCrud promotorCrud = new PromotorCrud();
         try {
             promotorCrud.agregar(liderUno);
             promotorCrud.agregar(liderDos);
             promotorCrud.buscar("LL001");
             promotorCrud.buscar("LL002");
-            promotorCrud.buscar("LL003");
-            promotorCrud.editar(liderUno);
+            promotorCrud.buscar("LL003");            
             promotorCrud.editar(liderDos);
             promotorCrud.eliminar("LL001");
             promotorCrud.eliminar("LL004");
             System.out.println("La lista de promotores es: " + promotorCrud.listarTodo());
             System.out.println("El número de promotores existentes en la lista es: " + promotorCrud.contar());
- ;          System.out.println("");
-} catch (Exception e){
+            System.out.println("");
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-         }
+        }
 
-         ProyectoCrud proyectoCrud = new ProyectoCrud();
-         try {
+        proyectoDos.setDenomComercial("Creación y lanzamiento nuevo juguete");
+
+        ProyectoCrud proyectoCrud = new ProyectoCrud();
+        try {
             proyectoCrud.agregar(proyectoUno);
             proyectoCrud.agregar(proyectoDos);
             proyectoCrud.buscar("AMB001");
             proyectoCrud.buscar("DIV001");
-            proyectoCrud.buscar("XXX000");
-            proyectoCrud.editar(proyectoUno);
+            proyectoCrud.buscar("XXX000");            
             proyectoCrud.editar(proyectoDos);
             proyectoCrud.eliminar("AMB001");
             proyectoCrud.eliminar("YYY111");
             System.out.println("La lista de proyectos es: " + proyectoCrud.listarTodo());
-            System.out.println("El número de proyectos existentes en la lista es: " + proyectoCrud.contar());   
+            System.out.println("El número de proyectos existentes en la lista es: " + proyectoCrud.contar());
             System.out.println("");
         } catch (Exception e) {
             System.out.println(e.getMessage());
-         }
+        }
 
-         TareaCrud tareaCrud = new TareaCrud();
-         try {
+        actividadDos.setDuracionEstimada("6 semanas");
+
+        TareaCrud tareaCrud = new TareaCrud();
+        try {
             tareaCrud.agregar(actividadUno);
             tareaCrud.agregar(actividadDos);
             tareaCrud.buscar("T1AMB001");
             tareaCrud.buscar("T1DIV001");
-            tareaCrud.buscar("T1.ProyectoXXX");
-            tareaCrud.editar(actividadUno);
-            tareaCrud.editar(actividadDos);       
+            tareaCrud.buscar("T1.ProyectoXXX");            
+            tareaCrud.editar(actividadDos);
             tareaCrud.eliminar("T1AMB001");
             tareaCrud.eliminar("T1.ProyectoYYY");
             System.out.println("La lista de tareas es: " + tareaCrud.listarTodo());
@@ -301,27 +308,27 @@ public class Principal {
             System.out.println();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-         }
-       
+        }
+
+        versionDos.setDescripcion("Esta es la primera version del documento");
+
         VersionCrud versionCrud = new VersionCrud();
         try {
             versionCrud.agregar(versionUno);
             versionCrud.agregar(versionDos);
             versionCrud.buscar("V1.AMB001");
             versionCrud.buscar("V2.AMB001");
-            versionCrud.buscar("V10.AMB001");
-            versionCrud.editar(versionUno);
+            versionCrud.buscar("V10.AMB001");            
             versionCrud.editar(versionDos);
             versionCrud.eliminar("V1.AMB001");
             versionCrud.eliminar("V11.AMB001");
             System.out.println("La lista de versiones es: " + versionCrud.listarTodo());
-            System.out.println("El número de vesriones exixtentes en la lista es: " + versionCrud.contar());        
+            System.out.println("El número de vesriones exixtentes en la lista es: " + versionCrud.contar());
             System.out.println();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        
 
-}
+    }
 
 }

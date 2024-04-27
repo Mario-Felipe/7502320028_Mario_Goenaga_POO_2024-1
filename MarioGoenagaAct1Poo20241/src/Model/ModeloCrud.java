@@ -2,6 +2,11 @@ package Model;
 
 import java.util.List;
 
+/**
+ *
+ * @author Mario Felipe
+ */
+
 public interface ModeloCrud<Clase> {
 
     public void agregar(Clase objeto) throws Exception;
