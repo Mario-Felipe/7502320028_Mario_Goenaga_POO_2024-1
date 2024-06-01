@@ -5,25 +5,57 @@
 package Dominio;
 
 import java.util.Date;
+import java.util.LinkedList;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 /**
  *
  * @author Mario Felipe
  */
-public class Empleado extends Usuario{
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Empleado extends Usuario{
+    
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private int id;
+    
+    @Basic
     private String dni;
     private String nombre;
     private String apellido;
     private String direccion;
     private String telefono;
-    private String correoElectronico;
-    private Date fechaContratacion;
+    private String correoElectronico;    
     private String rol;
     private String tipoContrato;
+    
+    @Temporal(TemporalType.DATE)
+    private Date fechaContratacion;
     private Date fechaNacimiento;
+    
+    @ManyToOne
     private Empresa empresa;
     
-    public Empleado() {}
+    @ManyToMany
+    private LinkedList<Proyecto> proyectos;
+    
+    @ManyToMany
+    private LinkedList<Tarea> tareas;
+    
+    public Empleado() {
+        super();
+    }
 
     public Empleado(String usuario,String contrasena,String estado,String dni, String nombre, String apellido, String direccion, String telefono, String correoElectronico, Date fechaContratacion, String rol, String tipoContrato, Date fechaNacimiento, Empresa empresa) {
         

@@ -5,20 +5,35 @@
 package Dominio;
 
 import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author Mario Felipe
  */
-public class Version {
 
+@Entity
+public class Version {
+    
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
-    private String identificacion;
-    private Date fecha;
+    @Basic
+    private String identificacion;    
     private String descripcion;
     private String empleado;
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
+    @ManyToOne
     private Documento documento;
-    
+   
     public Version(){}
 
     public Version(String identificacion, Date fecha, String descripcion, String empleado, Documento documento) {

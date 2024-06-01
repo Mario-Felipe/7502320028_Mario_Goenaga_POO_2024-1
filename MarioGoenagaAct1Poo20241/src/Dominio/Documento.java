@@ -4,22 +4,40 @@
  */
 package Dominio;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import java.util.LinkedList;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 /**
  *
  * @author Mario Felipe
  */
-public class Documento {
 
+@Entity
+public class Documento implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
+    @Basic
     private String proyecto;
-    private String codigoDocumento;
-    private Date fechaDocumento;
+    private String codigoDocumento;    
     private String descripcion;
+    @Temporal(TemporalType.DATE)
+    private Date fechaDocumento;
+    
+    @ManyToOne
     private Tarea tarea;
-    private List<Version> versiones;
+    @OneToMany(mappedBy = "documento")
+    private LinkedList<Version> versiones;
     
     public Documento(){}
 
@@ -30,13 +48,16 @@ public class Documento {
         this.fechaDocumento = fechaDocumento;
         this.descripcion = descripcion;
         this.tarea = tarea;
-        this.versiones = new ArrayList<Version>();
+        this.versiones = new LinkedList<>();
                 
     }
     
     public int getId() {
         return id;
-    }    
+    }  
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getProyecto() {
         return proyecto;
@@ -75,9 +96,23 @@ public class Documento {
         this.tarea = tarea;
     }
 
-    public List<Version> getVersiones() {
+    public LinkedList<Version> getVersiones() {
         return this.versiones;
     }
+
+    public void setVersiones(LinkedList<Version> versiones) {
+        this.versiones = versiones;
+    }
+    
+    public void agregarVersion(Version version){
+        this.versiones.add(version);
+    }
+    
+    public void quitarVersion(Version version){
+        this.versiones.remove(version);
+    }
+
+        
 
     @Override
     public String toString() {

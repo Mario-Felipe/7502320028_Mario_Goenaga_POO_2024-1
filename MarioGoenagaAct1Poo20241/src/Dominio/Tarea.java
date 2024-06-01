@@ -4,28 +4,52 @@
  */
 package Dominio;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.LinkedList;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author Mario Felipe
  */
-public class Tarea {
 
+@Entity
+public class Tarea {
+    
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
+    
+    @Basic
     private String identificadorTarea;
     private String descripcion;
-    private String tipo;
-    private Date fechaInicioEstimada;
-    private Date fechaInicioReal;
+    private String tipo;    
     private String duracionEstimada;
     private String duracionReal;
     private String empleado;
     private String prioridad;
+    
+    @Temporal(TemporalType.DATE)
+    private Date fechaInicioEstimada;
+    private Date fechaInicioReal;
+    
+    @ManyToOne
     private Proyecto proyecto;
-    private List<Documento> documentos;
+    
+    @OneToMany(mappedBy = "tarea")
+    private LinkedList<Documento> documentos;
+    
+    @ManyToMany
+    private RutaTrabajo rutaTrabajo;
 
     public Tarea() {
     }
@@ -42,7 +66,7 @@ public class Tarea {
         this.empleado = empleado;
         this.prioridad = prioridad;
         this.proyecto = proyecto;
-        this.documentos = new ArrayList<Documento>();
+        this.documentos = new LinkedList<>();
 
     }
     
@@ -120,7 +144,7 @@ public class Tarea {
         this.proyecto = proyecto;
     }
 
-    public List<Documento> getDocumentos() {
+    public LinkedList<Documento> getDocumentos() {
         return this.documentos;
     }
 

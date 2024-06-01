@@ -4,25 +4,49 @@
  */
 package Dominio;
 
-import java.util.ArrayList;
+
 import java.util.Date;
-import java.util.List;
+import java.util.LinkedList;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author Mario Felipe
  */
-public class Proyecto {
 
+@Entity
+public class Proyecto {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
+    
+    @Basic
     private String nombreClave;
-    private String denomComercial;
-    private Date fechaInicio;
-    private Date fechaFinalizacion;
+    private String denomComercial;    
     private String estado;
     private String codigoProyecto;
+    
+    @Temporal(TemporalType.DATE)
+    private Date fechaInicio;
+    private Date fechaFinalizacion;
+    
+    @ManyToOne
     private Promotor promotor;
-    private List<Tarea> tareas;
+    
+    @OneToMany(mappedBy = "proyecto")
+    private LinkedList<Tarea> tareas;
+    
+    @ManyToMany
+    private FuerzaLaboral fuerzaLaboral;
     
     public Proyecto(){}
 
@@ -35,7 +59,7 @@ public class Proyecto {
         this.estado = estado;
         this.codigoProyecto = codigoProyecto;
         this.promotor = promotor;
-        this.tareas = new ArrayList<Tarea>();        
+        this.tareas = new LinkedList<>();       
           
     }
 
@@ -92,7 +116,7 @@ public class Proyecto {
         this.promotor = promotor;
     }
 
-    public List<Tarea> getTareas() {
+    public LinkedList<Tarea> getTareas() {
         return this.tareas;
     }
 

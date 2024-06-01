@@ -4,21 +4,35 @@
  */
 package Dominio;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.LinkedList;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author Mario Felipe
  */
-public class Empresa {
 
+@Entity
+public class Empresa {
+    
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
+    
+    @Basic
     private String nit;
     private String nombre;
     private String telefono;
     private String correoElectronico;
-    private List<Empleado> empleados;
+    
+    @OneToMany(mappedBy = "empresa")
+    private LinkedList<Empleado> empleados;
 
     public Empresa() {
     }
@@ -29,7 +43,7 @@ public class Empresa {
         this.nombre = nombre;
         this.telefono = telefono;
         this.correoElectronico = correoElectronico;
-        this.empleados = new ArrayList<Empleado>();
+        this.empleados = new LinkedList<>();
 
     }
 
@@ -61,7 +75,7 @@ public class Empresa {
         this.correoElectronico = correoElectronico;
     }
 
-    public List<Empleado> getEmpleados() {
+    public LinkedList<Empleado> getEmpleados() {
         return this.empleados;
     }
 

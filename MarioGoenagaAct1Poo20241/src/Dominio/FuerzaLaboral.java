@@ -4,40 +4,62 @@
  */
 package Dominio;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author Mario Felipe
  */
+
 public class FuerzaLaboral {
-
-    private int id;
-    private Empleado empleado;
-    private Proyecto proyecto;
     
-    public FuerzaLaboral(){}
+    
+    private int id;    
+    
+    private LinkedList <Empleado> empleado;
+   
+    private LinkedList <Proyecto> proyecto;
+    
+    //public FuerzaLaboral(){}
 
-    public FuerzaLaboral(Empleado empleado, Proyecto proyecto) {
-        this.empleado = empleado;
-        this.proyecto = proyecto;
+    public FuerzaLaboral() {
+        this.empleado = new LinkedList<>();
+        this.proyecto = new LinkedList<>();
     }
     
     public int getId() {
         return id;
-    }    
+    }       
 
-    public Empleado getEmpleado() {
+//    public Empleado getEmpleado() {
+//        return empleado;
+//    }
+//
+//    public Proyecto getProyecto() {
+//        return proyecto;
+//    }
+//
+//    public void setEmpleado(Empleado empleado) {
+//        this.empleado = empleado;
+//    }
+//
+//    public void setProyecto(Proyecto proyecto) {
+//        this.proyecto = proyecto;
+//    }
+
+    public LinkedList<Empleado> getEmpleado() {
         return empleado;
     }
 
-    public Proyecto getProyecto() {
-        return proyecto;
-    }
-
-    public void setEmpleado(Empleado empleado) {
+    public void setEmpleado(LinkedList<Empleado> empleado) {
         this.empleado = empleado;
     }
 
-    public void setProyecto(Proyecto proyecto) {
+    public LinkedList<Proyecto> getProyecto() {
+        return proyecto;
+    }
+
+    public void setProyecto(LinkedList<Proyecto> proyecto) {
         this.proyecto = proyecto;
     }
     

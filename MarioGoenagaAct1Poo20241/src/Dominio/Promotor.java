@@ -4,19 +4,24 @@
  */
 package Dominio;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.LinkedList;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author Mario Felipe
  */
-public class Promotor extends Empleado {
 
-    private int id;
+@Entity
+public class Promotor extends Empleado {
+    @Basic
     private String area;
-    private List<Proyecto> proyectos;
+     
+    @OneToMany(mappedBy = "promotor")
+    private LinkedList<Proyecto> proyectos;
 
     public Promotor() {
     }
@@ -24,14 +29,10 @@ public class Promotor extends Empleado {
     public Promotor(String usuario, String contrasena, String estado, String dni, String nombre, String apellido, String direccion, String telefono, String correoElectronico, Date fechaContratacion, String rol, String tipoContrato, Empresa empresa, String area, Proyecto proyectos, Date fechaNacimiento) {
 
         super(usuario, contrasena, estado, dni, nombre, apellido, direccion, telefono, correoElectronico, fechaContratacion, rol, tipoContrato, fechaNacimiento, empresa);
-        this.proyectos = new ArrayList<Proyecto>();
+        this.proyectos = new LinkedList<>();
 
     }
     
-    public int getId() {
-        return id;
-    }    
-
     public String getArea() {
         return area;
     }
@@ -40,7 +41,7 @@ public class Promotor extends Empleado {
     }
     
     
-    public List<Proyecto> getProyectos() {
+    public LinkedList<Proyecto> getProyectos() {
         return this.proyectos;
     }
 
