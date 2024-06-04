@@ -1,22 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Dominio;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedList;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-/**
- *
- * @author Mario Felipe
- */
-
-@Entity
-public class Promotor extends Empleado {
+@Entity(name = "Promotor")
+public class Promotor extends Empleado implements Serializable {
     @Basic
     private String area;
      

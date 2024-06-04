@@ -1,10 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Dominio;
 
-
+import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedList;
 import javax.persistence.Basic;
@@ -12,21 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- *
- * @author Mario Felipe
- */
-
-@Entity
-public class Proyecto {
+@Entity(name = "Producto")
+public class Proyecto implements Serializable {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     
     @Basic
@@ -44,9 +34,6 @@ public class Proyecto {
     
     @OneToMany(mappedBy = "proyecto")
     private LinkedList<Tarea> tareas;
-    
-    @ManyToMany
-    private FuerzaLaboral fuerzaLaboral;
     
     public Proyecto(){}
 
@@ -119,6 +106,11 @@ public class Proyecto {
     public LinkedList<Tarea> getTareas() {
         return this.tareas;
     }
+
+    public void setTareas(LinkedList<Tarea> tareas) {
+        this.tareas = tareas;
+    }
+    
 
     @Override
     public String toString() {

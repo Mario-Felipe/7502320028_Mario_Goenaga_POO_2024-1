@@ -18,6 +18,7 @@ public class RutaTrabajo {
     
     private LinkedList<Empleado> empleado;
     
+    
     private LinkedList<Tarea> tarea;
     
     //public RutaTrabajo(){}

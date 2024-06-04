@@ -1,9 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Dominio;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedList;
 import javax.persistence.Basic;
@@ -17,18 +14,14 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-/**
- *
- * @author Mario Felipe
- */
 
-@Entity
+@Entity(name = "Empleado")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Empleado extends Usuario{
+public class Empleado extends Usuario implements Serializable {
     
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
+//    @Id
+//    @GeneratedValue(strategy=GenerationType.AUTO)
+//    private int id;
     
     @Basic
     private String dni;
@@ -151,6 +144,24 @@ public class Empleado extends Usuario{
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
+
+    public LinkedList<Proyecto> getProyectos() {
+        return proyectos;
+    }
+
+    public void setProyectos(LinkedList<Proyecto> proyectos) {
+        this.proyectos = proyectos;
+    }
+
+    public LinkedList<Tarea> getTareas() {
+        return tareas;
+    }
+
+    public void setTareas(LinkedList<Tarea> tareas) {
+        this.tareas = tareas;
+    }
+    
+    
 
     @Override
     public String toString() {

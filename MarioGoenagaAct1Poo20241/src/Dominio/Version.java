@@ -4,6 +4,7 @@
  */
 package Dominio;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -14,17 +15,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- *
- * @author Mario Felipe
- */
-
-@Entity
-public class Version {
+@Entity(name = "Versiones")
+public class Version implements Serializable {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
+    
     @Basic
     private String identificacion;    
     private String descripcion;

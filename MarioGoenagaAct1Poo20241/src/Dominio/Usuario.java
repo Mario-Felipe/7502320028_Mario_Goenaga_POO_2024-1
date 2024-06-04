@@ -4,6 +4,7 @@
  */
 package Dominio;
 
+import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,12 +18,12 @@ import javax.persistence.InheritanceType;
  * @author Mario Felipe
  */
 
-@Entity
+@Entity(name = "Usuarios")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Usuario {
+public class Usuario implements Serializable {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
     
     @Basic
@@ -39,7 +40,17 @@ public class Usuario {
         this.estado = estado;
         
     
-    } 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    
   
     public String getUsuario() {
         return usuario;
