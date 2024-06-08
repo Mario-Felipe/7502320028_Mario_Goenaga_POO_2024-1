@@ -2,10 +2,10 @@ package Repositorio;
 
 import Dominio.Promotor;
 import Persistencia.PromotorJpaController;
-import Persistencia.exceptions.NonexistentEntityException;
+import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Map;
+import javax.swing.JOptionPane;
 
 
 public class PromotorRepositorio {
@@ -13,31 +13,75 @@ public class PromotorRepositorio {
     public static PromotorJpaController repositorio = new PromotorJpaController();
     
     public void crear(Promotor promotor){
-        repositorio.create(promotor);
+        try {
+            if (encontrarPromotor(promotor.getUsuario()) != null) {
+                throw new Exception("El promotor ya se encuentra en la BD");
+            }
+            repositorio.create(promotor);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+        }
     }
     
     public void editar(Promotor promotor){
         try {
+            if (encontrarPromotor(promotor.getDni()) == null) {
+                throw new Exception("El promotor no se encuentra en la BD");
+            }
             repositorio.edit(promotor);
-        } catch (Exception ex) {
-            Logger.getLogger(PromotorRepositorio.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }
     
-    public void destroy(int id){
+    public void destruir(String promotor){
+        Promotor encontrado = encontrarPromotor(promotor);
         try {
-            repositorio.destroy(id);
-        } catch (NonexistentEntityException ex) {
-            Logger.getLogger(PromotorRepositorio.class.getName()).log(Level.SEVERE, null, ex);
+            if ( encontrado == null) {
+                throw new Exception("El promotor no se encuentra en la BD");
+            }
+            repositorio.destroy(encontrado.getId());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }
     
-    public Promotor buscar(int id){
-        return repositorio.findPromotor(id);
+    public Promotor buscar(String promotor){
+        Promotor encontrado = encontrarPromotor(promotor);
+        try {
+            if (encontrado == null) {
+                throw new Exception("El promotor no se encuentra en la BD");
+
+            }
+            return repositorio.findPromotor(encontrado.getId());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+            return null;
+        }
     }
     
     public List<Promotor> buscarTodo(){
         return repositorio.findPromotorEntities();                
     }
     
+    public Promotor encontrarPromotor(String codigo){
+        Promotor encontrado = null;
+        
+        List<Promotor> lista = buscarTodo();
+        
+        Map<String, Promotor> listaPromotores = new HashMap();
+        
+        for(Promotor entry : lista){
+            listaPromotores.put(entry.getDni(), entry);
+        
+        }
+        
+        encontrado = listaPromotores.get(codigo);
+        
+        if(encontrado != null){
+            return encontrado;
+        } else {
+            return null;
+        }
+    }
 }

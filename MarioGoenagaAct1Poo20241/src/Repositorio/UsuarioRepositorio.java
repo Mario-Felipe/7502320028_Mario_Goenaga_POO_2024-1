@@ -2,23 +2,19 @@ package Repositorio;
 
 import Dominio.Usuario;
 import Persistencia.UsuarioJpaController;
-import Persistencia.exceptions.NonexistentEntityException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
 public class UsuarioRepositorio {
-    
+
     public static UsuarioJpaController repositorio = new UsuarioJpaController();
-    
-    public void crear(Usuario usuario){
-        
+
+    public void crear(Usuario usuario) {
+
         try {
-            if(encontrarUsuario(usuario.getUsuario())!= null){
+            if (encontrarUsuario(usuario.getUsuario()) != null) {
                 throw new Exception("El usuario ya ase encuentra en la BD");
             }
             repositorio.create(usuario);
@@ -26,58 +22,73 @@ public class UsuarioRepositorio {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }
-    
-    public void editar(Usuario usuario){
+
+    public void editar(Usuario usuario) {
         try {
+            if (encontrarUsuario(usuario.getUsuario()) == null) {
+                throw new Exception("El usuario no se encuentra en la BD");
+            }
             repositorio.edit(usuario);
-        } catch (Exception ex) {
-            Logger.getLogger(UsuarioRepositorio.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }
-    
-    public void destroy(int id){
+
+    public void destruir (String usuario) {
+        Usuario encontrado = encontrarUsuario(usuario);
         try {
-            repositorio.destroy(id);
-        } catch (NonexistentEntityException ex) {
-            Logger.getLogger(UsuarioRepositorio.class.getName()).log(Level.SEVERE, null, ex);
+            if ( encontrado == null) {
+                throw new Exception("El usuario no se encuentra en la BD");
+            }
+            repositorio.destroy(encontrado.getId());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
     }
-    
-    public Usuario buscar(int id){
-        return repositorio.findUsuario(id);
+
+    public Usuario buscar(String usuario) {
+        Usuario encontrado = encontrarUsuario(usuario);
+        try {
+            if (encontrado == null) {
+                throw new Exception("El usuario no se encuentra en la BD");
+
+            }
+            return repositorio.findUsuario(encontrado.getId());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
+            return null;
+        }        
+        
     }
-    
-    public List<Usuario> buscarTodo(){
+
+    public List<Usuario> buscarTodo() {
         return repositorio.findUsuarioEntities();
     }
- 
-public Usuario encontrarUsuario(String codigo){
+
+    public Usuario encontrarUsuario(String codigo) {
         Usuario encontrado = null;
 
+        List<Usuario> lista = buscarTodo();
 
-            List<Usuario> lista = buscarTodo();
+        Map<String, Usuario> listaUsuarios = new HashMap<>();
 
-            Map<String, Usuario> listaUsuarios = new HashMap<>();
+        for (Usuario entry : lista) {
+            listaUsuarios.put(entry.getUsuario(), entry);
+        }
 
-            for (Usuario entry : lista) {
-                listaUsuarios.put(entry.getUsuario(), entry);
-            }
+        encontrado = listaUsuarios.get(codigo);
 
-            encontrado = listaUsuarios.get(codigo);
-
-            if (!(encontrado == null)) {
-                return encontrado;
-            }else{
-                return null;
-            }
+        if (encontrado != null) {
+            return encontrado;
+        } else {
+            return null;
+        }
     }
 
-public Usuario IniciarSesion(String usuario, String passwd) throws Exception {
+    public Usuario IniciarSesion(String usuario, String passwd) throws Exception {
 
         try {
             Usuario usr = encontrarUsuario(usuario);
-
-
 
             if (usr == null) {
                 throw new Exception("No se encontro el Usuario");
@@ -98,5 +109,5 @@ public Usuario IniciarSesion(String usuario, String passwd) throws Exception {
             return null;
         }
     }
-    
+
 }

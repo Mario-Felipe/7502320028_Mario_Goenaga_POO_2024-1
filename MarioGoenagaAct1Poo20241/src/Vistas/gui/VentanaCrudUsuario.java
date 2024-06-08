@@ -44,8 +44,6 @@ public class VentanaCrudUsuario extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         campoEstado = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
         campoContrasena = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         botonAgregar = new javax.swing.JButton();
@@ -76,10 +74,6 @@ public class VentanaCrudUsuario extends javax.swing.JDialog {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Estado:");
 
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 16)); // NOI18N
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("jLabel3");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -98,11 +92,7 @@ public class VentanaCrudUsuario extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(campoEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -120,11 +110,7 @@ public class VentanaCrudUsuario extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(campoEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -138,8 +124,18 @@ public class VentanaCrudUsuario extends javax.swing.JDialog {
         });
 
         botonEditar.setText("Editar");
+        botonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEditarActionPerformed(evt);
+            }
+        });
 
         botonBuscar.setText("Buscar");
+        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarActionPerformed(evt);
+            }
+        });
 
         botonEliminar.setText("Eliminar");
         botonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -202,13 +198,33 @@ public class VentanaCrudUsuario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        // TODO add your handling code here:
+        
+        String usuario = campoUsuario.getText();
+        
+        int respuesta = JOptionPane.showConfirmDialog(this, "¿Seguro de querer eliminar este nuevo usuarioi?", "Advertencia", JOptionPane.YES_NO_OPTION);
+
+        if (respuesta == JOptionPane.YES_OPTION) {
+            try {
+                Principal.usuarioBd.destruir(usuario);
+                JOptionPane.showConfirmDialog(this, "Usuario eliminado con exito", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception e) {
+                JOptionPane.showConfirmDialog(this, "Usuario no existe en la BD", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
+            }
+        
+        }
     }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void botonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonLimpiarActionPerformed
         campoContrasena.setText("");
         campoEstado.setText("");
         campoUsuario.setText("");
+
+        String titulo = this.getTitle();
+        if (titulo.indexOf("Editar") != -1) {
+            campoUsuario.setEditable(true);
+            campoContrasena.setEditable(false);
+            campoEstado.setEditable(false);
+        }
     }//GEN-LAST:event_botonLimpiarActionPerformed
 
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
@@ -224,22 +240,69 @@ public class VentanaCrudUsuario extends javax.swing.JDialog {
                 nuevoUsuario.setUsuario(usuario);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "El usuario no se puede agregar en la BD, por favor ingrese los datos correctamente");
-                return;             
-                
+                return;
+
             }
-                        
 
             nuevoUsuario.setContrasena(contrasena);
             nuevoUsuario.setEstado(estado);
 
             Principal.usuarioBd.crear(nuevoUsuario);
-            
+
             JOptionPane.showMessageDialog(this, "El usuario fue agregado correctamente");
         }
 
         botonLimpiarActionPerformed(evt);
 
     }//GEN-LAST:event_botonAgregarActionPerformed
+
+
+    private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
+
+        int respuesta = JOptionPane.showConfirmDialog(this, "¿Seguro de querer realizar estas ediciones?", "Advertencia", JOptionPane.YES_NO_OPTION);
+
+        if (respuesta == JOptionPane.YES_OPTION) {
+            String contrasena = String.valueOf(campoContrasena.getPassword());
+            String estado = campoEstado.getText();
+            String usuario = campoUsuario.getText();
+
+            nuevoUsuario.setContrasena(contrasena);
+            nuevoUsuario.setEstado(estado);
+
+            Principal.usuarioBd.editar(nuevoUsuario);
+
+            JOptionPane.showMessageDialog(this, "El usuario fue editado correctamente");
+        }
+
+        botonLimpiarActionPerformed(evt);
+
+    }//GEN-LAST:event_botonEditarActionPerformed
+
+    private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
+        String usuario = campoUsuario.getText();
+
+        if (usuario.isEmpty() == true) {
+            JOptionPane.showMessageDialog(null, "Se requiere el nombre de usuario para realizar la busqueda", "Atención", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        } else {
+            Usuario nombreUsuario = Principal.usuarioBd.encontrarUsuario(usuario);
+
+            if (nombreUsuario == null) {
+                JOptionPane.showMessageDialog(null, "El usuario no se encuentra en la BD", "Atención", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                campoUsuario.setText(nombreUsuario.getUsuario());
+                campoContrasena.setText(nombreUsuario.getContrasena());
+                campoEstado.setText(nombreUsuario.getEstado());
+
+                String titulo = this.getTitle();
+                if (titulo.indexOf("Editar") != -1) {
+                    campoUsuario.setEditable(false);
+                    campoContrasena.setEditable(true);
+                    campoEstado.setEditable(true);
+                }
+            }
+        }
+    }//GEN-LAST:event_botonBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -358,12 +421,10 @@ public class VentanaCrudUsuario extends javax.swing.JDialog {
     private javax.swing.JTextField campoEstado;
     private javax.swing.JTextField campoUsuario;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }
