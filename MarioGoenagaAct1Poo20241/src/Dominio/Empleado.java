@@ -3,11 +3,9 @@ package Dominio;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.Vector;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
@@ -168,9 +166,14 @@ public class Empleado extends Usuario implements Serializable {
         return "Ficha del Empleado: " + "\n DNI: " + dni + "\n Nombre: " + nombre + "\n Apellido: " + apellido + "\n Direccion: " + direccion + "\n Telefono: " + telefono + "\n Correo Electronico: " + correoElectronico + "\n Fecha de Contratacion: " + fechaContratacion + "\n Rol: " + rol + "\n Tipo de Contrato: " + tipoContrato;
     }
 
-    
+    public Vector<String> convertirAVector(){
+        Vector<String> datos = new Vector<String>();
+        datos.addElement(dni);
+        datos.addElement(nombre);
+        datos.addElement(apellido);
+        return datos;
 
-    
+    }
     
 
 }

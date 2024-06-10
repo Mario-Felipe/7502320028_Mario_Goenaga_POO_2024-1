@@ -3,6 +3,7 @@ package Dominio;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.Vector;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -117,5 +118,10 @@ public class Proyecto implements Serializable {
         return "Información del Proyecto." + "\n Nombre Clave: " + nombreClave + "\n Denominación Comercial: " + denomComercial + "\n Fecha de Inicio: " + fechaInicio + "\n Fecha de Finalización: " + fechaFinalizacion + "\n Estado: " + estado + "\n CodigoProyecto: " + codigoProyecto;
     }
     
-     
+     public Vector<String> convertirAVector(){
+        Vector<String> datos = new Vector<String>();
+        datos.addElement(nombreClave);
+        datos.addElement(codigoProyecto);
+        return datos;
+     }    
 }

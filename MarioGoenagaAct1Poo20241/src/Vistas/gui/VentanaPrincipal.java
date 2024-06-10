@@ -1,5 +1,6 @@
 package Vistas.gui;
 
+import co.edu.udec.poo.mariogoenaga.Principal;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.text.JTextComponent;
@@ -132,6 +133,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         itemSalirUsuario.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         itemSalirUsuario.setText("Salir");
+        itemSalirUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemSalirUsuarioActionPerformed(evt);
+            }
+        });
         menuUsuario.add(itemSalirUsuario);
         menuUsuario.add(jSeparator9);
 
@@ -177,6 +183,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         itemBuscarPorId1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         itemBuscarPorId1.setText("Buscar por Id");
+        itemBuscarPorId1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemBuscarPorId1ActionPerformed(evt);
+            }
+        });
         subMenuReportesUsuario.add(itemBuscarPorId1);
 
         itemBuscarPorCodigoProyecto1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -232,6 +243,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         itemBuscarPorId2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         itemBuscarPorId2.setText("Buscar por Id");
+        itemBuscarPorId2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemBuscarPorId2ActionPerformed(evt);
+            }
+        });
         subMenuReportesEmpleado.add(itemBuscarPorId2);
 
         itemBuscarPorCodigoProyecto2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -287,6 +303,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         itemBuscarPorId3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         itemBuscarPorId3.setText("Buscar por Id");
+        itemBuscarPorId3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemBuscarPorId3ActionPerformed(evt);
+            }
+        });
         subMenuReportesEmpresa.add(itemBuscarPorId3);
 
         itemBuscarPorCodigoProyecto3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -342,6 +363,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         itemBuscarPorId4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         itemBuscarPorId4.setText("Buscar por Id");
+        itemBuscarPorId4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemBuscarPorId4ActionPerformed(evt);
+            }
+        });
         subMenuReportesPromotor.add(itemBuscarPorId4);
 
         itemBuscarPorCodigoProyecto4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -397,6 +423,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         itemBuscarPorId.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         itemBuscarPorId.setText("Buscar por Id");
+        itemBuscarPorId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemBuscarPorIdActionPerformed(evt);
+            }
+        });
         subMenuReportesProyecto.add(itemBuscarPorId);
 
         itemBuscarPorCodigoProyecto.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -452,6 +483,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         itemBuscarPorId6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         itemBuscarPorId6.setText("Buscar por Id");
+        itemBuscarPorId6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemBuscarPorId6ActionPerformed(evt);
+            }
+        });
         subMenuReportesTarea.add(itemBuscarPorId6);
 
         itemBuscarPorCodigoProyecto6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -507,6 +543,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         itemBuscarPorId5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         itemBuscarPorId5.setText("Buscar por Id");
+        itemBuscarPorId5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemBuscarPorId5ActionPerformed(evt);
+            }
+        });
         subMenuReportesDocumento.add(itemBuscarPorId5);
 
         itemBuscarPorCodigoProyecto5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -562,6 +603,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         itemBuscarPorId7.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         itemBuscarPorId7.setText("Buscar por Id");
+        itemBuscarPorId7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemBuscarPorId7ActionPerformed(evt);
+            }
+        });
         subMenuReportesVersion.add(itemBuscarPorId7);
 
         itemBuscarPorCodigoProyecto7.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -1248,6 +1294,65 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventana.setLocationByPlatform(true);
         ventana.setVisible(true);
     }//GEN-LAST:event_itemEliminarPromotorActionPerformed
+
+    private void itemSalirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSalirUsuarioActionPerformed
+        Principal.Loguot();
+        
+        Login login = new Login();
+        login.setVisible(true);
+        login.pack();
+        login.setLocationRelativeTo(null);
+        
+        this.dispose();
+    }//GEN-LAST:event_itemSalirUsuarioActionPerformed
+
+    private void itemBuscarPorId1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBuscarPorId1ActionPerformed
+        VentanaReportesUsuarios ventanaListas = new VentanaReportesUsuarios(this, true);
+        ventanaListas.setLocationByPlatform(true);
+        ventanaListas.setVisible(true);
+    }//GEN-LAST:event_itemBuscarPorId1ActionPerformed
+
+    private void itemBuscarPorId5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBuscarPorId5ActionPerformed
+        VentanaReportesDocumentos ventanaListas = new VentanaReportesDocumentos(this, true);
+        ventanaListas.setLocationByPlatform(true);
+        ventanaListas.setVisible(true);
+    }//GEN-LAST:event_itemBuscarPorId5ActionPerformed
+  
+    private void itemBuscarPorId3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBuscarPorId3ActionPerformed
+        VentanaReportesEmpresas ventanaListas = new VentanaReportesEmpresas(this, true);
+        ventanaListas.setLocationByPlatform(true);
+        ventanaListas.setVisible(true);
+    }//GEN-LAST:event_itemBuscarPorId3ActionPerformed
+
+    private void itemBuscarPorId2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBuscarPorId2ActionPerformed
+        VentanaReportesEmpleados ventanaListas = new VentanaReportesEmpleados(this, true);
+        ventanaListas.setLocationByPlatform(true);
+        ventanaListas.setVisible(true);
+    }//GEN-LAST:event_itemBuscarPorId2ActionPerformed
+
+    private void itemBuscarPorId4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBuscarPorId4ActionPerformed
+//        VentanaReportesPromotores ventanaListas = new VentanaReportesPromotores(this, true);
+//        ventanaListas.setLocationByPlatform(true);
+//        ventanaListas.setVisible(true);
+    }//GEN-LAST:event_itemBuscarPorId4ActionPerformed
+
+    private void itemBuscarPorIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBuscarPorIdActionPerformed
+        VentanaReportesProyectos ventanaListas = new VentanaReportesProyectos(this, true);
+        ventanaListas.setLocationByPlatform(true);
+        ventanaListas.setVisible(true);
+    }//GEN-LAST:event_itemBuscarPorIdActionPerformed
+
+    private void itemBuscarPorId6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBuscarPorId6ActionPerformed
+        VentanaReportesTareas ventanaListas = new VentanaReportesTareas(this, true);
+        ventanaListas.setLocationByPlatform(true);
+        ventanaListas.setVisible(true);
+    }//GEN-LAST:event_itemBuscarPorId6ActionPerformed
+
+    private void itemBuscarPorId7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBuscarPorId7ActionPerformed
+        VentanaReportesVersiones ventanaListas = new VentanaReportesVersiones(this, true);
+        ventanaListas.setLocationByPlatform(true);
+        ventanaListas.setVisible(true);
+    }//GEN-LAST:event_itemBuscarPorId7ActionPerformed
 
     public void desabilitarBotones(JButton botones[]){
         for(JButton boton: botones){

@@ -64,6 +64,10 @@ public class PromotorRepositorio {
         return repositorio.findPromotorEntities();                
     }
     
+    public int contarTodoPromotor(){        
+        return repositorio.getPromotorCount();
+    }
+    
     public Promotor encontrarPromotor(String codigo){
         Promotor encontrado = null;
         

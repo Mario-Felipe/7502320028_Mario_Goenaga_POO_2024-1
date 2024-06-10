@@ -10,7 +10,8 @@ import Repositorio.ProyectoRepositorio;
 import Repositorio.TareaRepositorio;
 import Repositorio.UsuarioRepositorio;
 import Repositorio.VersionRepositorio;
-import Vistas.gui.VentanaPrincipal;
+import Vistas.gui.Login;
+import javax.swing.JOptionPane;
 
 //import Crud.DocumentoCrud;
 //import Crud.EmpleadoCrud;
@@ -42,14 +43,24 @@ public class Principal {
     private static Usuario usuarioSesion = null;
 
     public static void main(String args[]) {
-        VentanaPrincipal ventana = new VentanaPrincipal();
+        Login login = new Login();
         
-        ventana.setVisible(true);
-        ventana.pack();
-        ventana.setLocationRelativeTo(null);
-        ventana.setExtendedState(ventana.MAXIMIZED_BOTH);
+        login.setVisible(true);
+        login.pack();
+        login.setLocationRelativeTo(null);
+//        ventana.setExtendedState(ventana.MAXIMIZED_BOTH);
         
     }
+
+    public static Usuario getUsuarioSesion() {
+        return usuarioSesion;
+    }
+
+    public static void setUsuarioSesion(Usuario usuarioSesion) {
+        Principal.usuarioSesion = usuarioSesion;
+    }
+    
+    
     
     public static boolean LoginUser(String usuario, String clave) throws Exception {
 
@@ -60,10 +71,15 @@ public class Principal {
 
             return usuarioLoged != null;
         } catch (Exception e) {
-
+             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage(), "Success", JOptionPane.ERROR_MESSAGE);
         }
 
         return false;
+    }
+    
+    public static void Loguot() {
+        setUsuarioSesion(null);
+        
     }
     
          

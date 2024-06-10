@@ -64,6 +64,10 @@ public class UsuarioRepositorio {
     public List<Usuario> buscarTodo() {
         return repositorio.findUsuarioEntities();
     }
+    
+    public int contarTodoUsuario(){        
+        return repositorio.getUsuarioCount();
+    }
 
     public Usuario encontrarUsuario(String codigo) {
         Usuario encontrado = null;
@@ -108,6 +112,26 @@ public class UsuarioRepositorio {
             System.out.println("Error: " + e.getMessage());
             return null;
         }
+        
+        
+    }
+    
+    public Usuario validarContraseña(String usuario,String contrasena){
+        List<Usuario> listaUsuarios = buscarTodo();
+
+        Map<String,Usuario> map = new HashMap<>();
+
+        for (Usuario op: listaUsuarios){
+            map.put(op.getUsuario(), op);
+        }
+
+       Usuario buscar = map.get(usuario);
+
+        if (contrasena.equals(buscar.getContrasena())) {
+            return buscar;
+        }else{
+        return null;
+        } 
     }
 
 }

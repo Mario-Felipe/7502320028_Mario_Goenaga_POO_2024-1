@@ -3,6 +3,7 @@ package Dominio;
 
 import java.io.Serializable;
 import java.util.LinkedList;
+import java.util.Vector;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -87,7 +88,11 @@ public class Empresa implements Serializable {
         return "Datos de la Empresa. " + "\n Nit: " + nit + "\n Nombre: " + nombre + "\n Telefono: " + telefono + "\n Correo Electronico: " + correoElectronico;
     }
     
+    public Vector<String> convertirAVector(){
+        Vector<String> datos = new Vector<String>();
+        datos.addElement(nit);
+        datos.addElement(nombre);
+        return datos;    
+    }
     
-    
-
 }

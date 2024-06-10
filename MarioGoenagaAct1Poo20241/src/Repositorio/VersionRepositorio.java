@@ -65,6 +65,10 @@ public class VersionRepositorio {
     public List<Version> buscarTodo() {
         return repositorio.findVersionEntities();
     }
+    
+    public int contarTodoVersion(){        
+        return repositorio.getVersionCount();
+    }
 
     public Version encontrarVersion(String codigo) {
         Version encontrado = null;

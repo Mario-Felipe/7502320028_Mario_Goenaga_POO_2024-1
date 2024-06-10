@@ -80,7 +80,7 @@
           <Color blue="ff" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Formulario Documento"/>
+        <Property name="text" type="java.lang.String" value="Formulario Empleado"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">

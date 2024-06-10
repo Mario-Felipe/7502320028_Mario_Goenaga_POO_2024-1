@@ -3,6 +3,7 @@ package Dominio;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.Vector;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -110,16 +111,12 @@ public class Documento implements Serializable {
     public String toString() {
         return "Documento Generado." + "\n Proyecto: " + proyecto + "\n Codigo de Documento: " + codigoDocumento + "\n Fecha de Documento: " + fechaDocumento + "\n descripcion: " + descripcion;
     }
+    
+      public Vector<String> convertirAVector(){
+        Vector<String> datos = new Vector<String>();
+        datos.addElement(proyecto);
+        datos.addElement(codigoDocumento);
+        return datos;
+   }
 
-    
-    
-
-    
-
-    
-
-    
-    
-    
-
-}
+    }

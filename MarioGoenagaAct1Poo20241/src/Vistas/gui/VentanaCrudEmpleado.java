@@ -5,22 +5,22 @@
 package Vistas.gui;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 
 /**
  *
  * @author Mario Felipe
  */
 public class VentanaCrudEmpleado extends javax.swing.JDialog {
-
+       
     /**
      * Creates new form VenataCrudEmpleado
      */
+
     public VentanaCrudEmpleado(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();
+        initComponents();        
     }
 
     /**
@@ -71,7 +71,7 @@ public class VentanaCrudEmpleado extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Formulario Documento");
+        jLabel1.setText("Formulario Empleado");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 51), 2, true), "Datos del Empleado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 1, 14), new java.awt.Color(0, 102, 51))); // NOI18N
 

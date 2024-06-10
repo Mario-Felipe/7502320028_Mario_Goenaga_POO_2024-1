@@ -66,6 +66,10 @@ public class TareaRepositorio {
         return repositorio.findTareaEntities();
     }
     
+    public int contarTodoTarea(){        
+        return repositorio.getTareaCount();
+    }
+    
     public Tarea encontrarTarea(String codigo){
         Tarea encontrado = null;
         

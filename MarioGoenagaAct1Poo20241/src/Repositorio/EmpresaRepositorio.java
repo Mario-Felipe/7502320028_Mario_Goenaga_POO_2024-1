@@ -65,6 +65,10 @@ public class EmpresaRepositorio {
         return repositorio.findEmpresaEntities();               
     }
     
+    public int contarTodoEmpresa(){        
+        return repositorio.getEmpresaCount();
+    }
+    
     public Empresa encontrarEmpresa(String codigo){
         Empresa encontrado = null;
         

@@ -64,6 +64,10 @@ public class DocumentoRepositorio {
          return repositorio.findDocumentoEntities();
      }
      
+     public int contarTodoDocumento(){        
+        return repositorio.getDocumentoCount();
+    }
+     
      public Documento encontrarDocumento(String codigo){
          Documento encontrado = null;
          

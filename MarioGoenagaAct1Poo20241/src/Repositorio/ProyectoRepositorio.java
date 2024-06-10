@@ -66,6 +66,10 @@ public class ProyectoRepositorio {
         return repositorio.findProyectoEntities(); 
     }
         
+    public int contarTodoProyecto(){        
+        return repositorio.getProyectoCount();
+    }    
+        
     public Proyecto encontrarProyecto(String codigo){
         Proyecto encontrado = null;
         

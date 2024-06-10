@@ -5,6 +5,7 @@
 package Dominio;
 
 import java.io.Serializable;
+import java.util.Vector;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -78,6 +79,16 @@ public class Usuario implements Serializable {
         return "Datos del Usuario. " + "\n Usuario: " + usuario + "\n Contrasena: " + contrasena + "\n Estado: " + estado;
     }
      
+    /*Metodo para devolver un arreglo o vector con los datos de Usduario
+     *con el fin de que dicho arreglo o vector sea parte de las filas de un JTable
+     */
+    
+    public Vector<String> convertirAVector(){
+        Vector<String> datos = new Vector<String>();
+        datos.addElement(usuario);
+        datos.addElement(estado);
+        return datos;
+   }
     
 }
 

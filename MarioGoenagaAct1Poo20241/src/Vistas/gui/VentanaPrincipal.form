@@ -61,6 +61,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Salir"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemSalirUsuarioActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator9">
             </MenuItem>
@@ -125,6 +128,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Buscar por Id"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemBuscarPorId1ActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorCodigoProyecto1">
                   <Properties>
@@ -207,6 +213,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Buscar por Id"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemBuscarPorId2ActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorCodigoProyecto2">
                   <Properties>
@@ -289,6 +298,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Buscar por Id"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemBuscarPorId3ActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorCodigoProyecto3">
                   <Properties>
@@ -371,6 +383,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Buscar por Id"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemBuscarPorId4ActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorCodigoProyecto4">
                   <Properties>
@@ -453,6 +468,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Buscar por Id"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemBuscarPorIdActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorCodigoProyecto">
                   <Properties>
@@ -535,6 +553,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Buscar por Id"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemBuscarPorId6ActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorCodigoProyecto6">
                   <Properties>
@@ -617,6 +638,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Buscar por Id"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemBuscarPorId5ActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorCodigoProyecto5">
                   <Properties>
@@ -699,6 +723,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Buscar por Id"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemBuscarPorId7ActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="itemBuscarPorCodigoProyecto7">
                   <Properties>

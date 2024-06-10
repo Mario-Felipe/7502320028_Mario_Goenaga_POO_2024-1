@@ -61,7 +61,11 @@ public class EmpleadoRepositorio {
     }
     
     public List<Empleado> buscarTodo(){
-        return repositorio.findEmpleadoEntities();
+        return repositorio.findEmpleadoEntities();        
+    }
+    
+    public int contarTodoEmpleado(){        
+        return repositorio.getEmpleadoCount();
     }
     
     public Empleado encontrarEmpleado(String codigo){
